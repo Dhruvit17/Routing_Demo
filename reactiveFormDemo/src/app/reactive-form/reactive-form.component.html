@@ -1,0 +1,66 @@
+<div class="card my-auto border-0 mx-auto">
+  <div class="card-header">
+      <h2>Registration Form</h2>
+  </div>
+  <div class="card-body">
+      <form [formGroup]="registrationForm" (ngSubmit)="register()" class="form-group">
+          <div class="form-group row ">
+              <label for="Name">Name:</label>
+              <input type="text" name="name" id="name" class="form-control" formControlName="name">
+              <div *ngIf="rf.name.touched && rf.name.errors">
+                  <small class="red" *ngIf="rf.name.errors.required">
+                      Name is required!!
+                  </small>
+                  <small class="red" *ngIf="rf.name.errors.minlength">
+                      Minimum 3 characters required!!
+                  </small>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="Email">Email:</label>
+              <input type="email" name="email" id="email" class="form-control" formControlName="email">
+              <div *ngIf="rf.email.touched && rf.email.errors">
+                  <small class="red" *ngIf="rf.email.errors.email">
+                      Please enter a valid email!!
+                  </small>
+                  <small class="red" *ngIf="rf.email.errors.required">
+                      Email is required
+                  </small>
+              </div>
+          </div>
+          <div class="form-group row ">
+              <label for="Password">Password:</label>
+              <input type="password" name="password" id="password" class="form-control" formControlName="password">
+              <div *ngIf="rf.password.touched && rf.password.errors">
+                  <small class="red" *ngIf="rf.password.errors.required">
+                      Password is required
+                  </small>
+                  <small class="red" *ngIf="rf.password.errors.minlength">
+                    Minimum 8 characters required!!
+                </small>
+                  <small class="red" *ngIf="rf.password.errors.pattern">
+                      Password should contain 1 upper case, 1 digit and 1 special characters and at least 8 character
+                      long.
+                  </small>
+                  
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="phone">Mobile no: </label>
+              <input type="text" name="phone" id="phone" class="form-control" formControlName="phone">
+              <div *ngIf="rf.phone.touched && rf.phone.errors">
+                  <small class="red" *ngIf="rf.phone.errors.required">
+                      Mobile no. is required
+                  </small>    
+                  <small class="red" *ngIf="rf.phone.errors.pattern">
+                      Please enter valid Mobile no.
+                  </small>
+              </div>
+          </div>
+          <div class="form-group row my-2">
+              <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-dark border-success mx-auto">Submit</button>
+          </div>
+      </form>
+  </div>
+
+</div>
